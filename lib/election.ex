@@ -53,6 +53,11 @@ defmodule Election do
     ]
   end
 
+  def update(election, ["n" <> _ | args]) do
+    name = Enum.join(args, " ")
+    Map.put(election, :name, name)
+  end
+
   def view(election) do
     [
       view_header(election),
