@@ -1,4 +1,4 @@
-# VoteCounter
+# Vote Counter
 
 ## Ideation
 

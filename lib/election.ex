@@ -14,4 +14,8 @@ defmodule Election do
     ],
     next_id: 10
   )
+
+  def view_header(election) do
+    "Election for: #{election.name}\n"
+  end
 end
