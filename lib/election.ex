@@ -58,6 +58,20 @@ defmodule Election do
     Map.put(election, :name, name)
   end
 
+  def update(election, ["a" <> _ | args]) do
+    name = Enum.join(args, " ")
+    candidate = Candidate.new(election.next_id, name)
+    candidates = [candidate | election.candidates]
+
+    # election
+    # |> Map.put(:candidates, candidates)
+    # |> Map.put(:next_id, election.next_id + 1)
+
+    # OR
+
+    %{election | candidates: candidates, next_id: election.next_id + 1}
+  end
+
   def view(election) do
     [
       view_header(election),
