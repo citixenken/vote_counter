@@ -1,6 +1,6 @@
 defmodule Election do
   defstruct(
-    name: "Governor",
+    name: "Fellowship of the Ring Team Leader",
     candidates: [
       Candidate.new(1, "Gandalf"),
       Candidate.new(2, "Aragorn"),
@@ -53,6 +53,30 @@ defmodule Election do
     ]
   end
 
+  def run(), do: %Election{} |> run()
+
+  def run(:quit), do: :quit
+
+  def run(election = %Election{}) do
+    [IO.ANSI.clear(), IO.ANSI.cursor(0, 0), IO.ANSI.light_cyan()]
+    |> IO.write()
+
+    election
+    |> view
+    |> IO.write()
+
+    command = IO.gets(">")
+
+    election
+    |> update(command)
+    # maintain app state
+    |> run()
+  end
+
+  def update(_election, ["q" <> _]) do
+    :quit
+  end
+
   def update(election, cmd) when is_binary(cmd) do
     update(election, String.split(cmd))
   end
@@ -76,7 +100,7 @@ defmodule Election do
     %{election | candidates: candidates, next_id: election.next_id + 1}
   end
 
-  def update(election, ["v" <> _ , id]) do
+  def update(election, ["v" <> _, id]) do
     vote(election, Integer.parse(id))
   end
 
