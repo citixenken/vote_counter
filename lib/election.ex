@@ -1,16 +1,22 @@
 defmodule Election do
+  @doc """
+  ## Examples
+    iex> %Election{} |> Election.update("n Mayor")
+    %Election{name: "Mayor"}
+
+  """
   defstruct(
-    name: "Fellowship of the Ring Team Leader",
+    name: "",
     candidates: [
-      Candidate.new(1, "Gandalf"),
-      Candidate.new(2, "Aragorn"),
-      Candidate.new(3, "Frodo"),
-      Candidate.new(4, "Sam"),
-      Candidate.new(5, "Pippin"),
-      Candidate.new(6, "Merry"),
-      Candidate.new(7, "Legolas"),
-      Candidate.new(8, "Gimli"),
-      Candidate.new(9, "Boromir")
+      # Candidate.new(1, "Gandalf"),
+      # Candidate.new(2, "Aragorn"),
+      # Candidate.new(3, "Frodo"),
+      # Candidate.new(4, "Sam"),
+      # Candidate.new(5, "Pippin"),
+      # Candidate.new(6, "Merry"),
+      # Candidate.new(7, "Legolas"),
+      # Candidate.new(8, "Gimli"),
+      # Candidate.new(9, "Boromir")
     ],
     next_id: 10
   )
