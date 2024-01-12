@@ -4,6 +4,15 @@ defmodule Election do
     iex> %Election{} |> Election.update("n Mayor")
     %Election{name: "Mayor"}
 
+    iex> %Election{} |> Election.update("a Aragorn")
+    %Election{candidates: [Candidate.new(1, "Aragorn")], next_id: 2}
+
+    iex> %Election{candidates: [Candidate.new(1, "Aragorn")]} |> Election.update("v 1")
+    %Election{candidates: [%Candidate{id: 1, name: "Aragorn", votes: 1}]}
+
+    iex> %Election{} |> Election.update("q")
+    :quit
+
   """
   defstruct(
     name: "",
@@ -18,7 +27,7 @@ defmodule Election do
       # Candidate.new(8, "Gimli"),
       # Candidate.new(9, "Boromir")
     ],
-    next_id: 10
+    next_id: 1
   )
 
   def view_header(election) do
